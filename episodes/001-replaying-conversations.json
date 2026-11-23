@@ -60,7 +60,8 @@
       "exclude": [
         "photo:4707539",
         "photo:2574276"
-      ]
+      ],
+      "pin": "photo:888397"
     },
     {
       "text": "So it rewinds the moment again and again, searching for the part you might have gotten wrong.",
@@ -108,7 +109,8 @@
       "avoid": [
         "green",
         "lamp"
-      ]
+      ],
+      "pin": "photo:10338211"
     },
     {
       "text": "So tonight, when the replay starts, ask yourself one question.",
