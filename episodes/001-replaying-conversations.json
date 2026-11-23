@@ -33,29 +33,33 @@
       ],
       "exclude": [
         "photo:2072907"
-      ]
+      ],
+      "pin": "photo:7346682"
     },
     {
       "text": "Every word. Every pause. The look on their face.",
       "query": "thoughtful face close up",
-      "visual": "video"
+      "visual": "video",
+      "pin": "video:203251"
     },
     {
       "text": "So why does your mind keep doing this?",
       "query": "rain on window night",
-      "visual": "video"
+      "visual": "video",
+      "pin": "video:238465"
     },
     {
       "text": "Because to your brain, a conversation is never just small talk. It's a quiet test of whether you still belong.",
-      "query": "people talking",
+      "query": "conversation cafe",
       "visual": "photo",
       "motion": "pan_right",
       "fallback_queries": [
-        "conversation",
-        "friends talking"
+        "people talking table",
+        "friends coffee talking"
       ],
       "exclude": [
-        "photo:4707539"
+        "photo:4707539",
+        "photo:2574276"
       ]
     },
     {
@@ -66,7 +70,8 @@
       "fallback_queries": [
         "man alone night",
         "lonely man"
-      ]
+      ],
+      "pin": "photo:4191143"
     },
     {
       "text": "Psychologists call this post-event processing. And here's what most people never realize.",
@@ -79,27 +84,37 @@
       ],
       "exclude": [
         "video:22761"
-      ]
+      ],
+      "pin": "photo:7106217"
     },
     {
       "text": "The other person probably isn't replaying it at all.",
       "query": "people walking busy street",
-      "visual": "video"
+      "visual": "video",
+      "pin": "video:248449"
     },
     {
       "text": "Research on the spotlight effect shows we consistently overestimate how much others notice our mistakes.",
-      "query": "spotlight empty stage",
+      "query": "person spotlight dark",
       "visual": "photo",
       "motion": "zoom_in",
       "fallback_queries": [
-        "stage light",
-        "spotlight"
+        "spotlight stage",
+        "stage light"
+      ],
+      "exclude": [
+        "photo:950382"
+      ],
+      "avoid": [
+        "green",
+        "lamp"
       ]
     },
     {
       "text": "So tonight, when the replay starts, ask yourself one question.",
       "query": "night sky stars",
-      "visual": "video"
+      "visual": "video",
+      "pin": "video:209264"
     },
     {
       "text": "Would I judge a friend this harshly for the same moment?",
@@ -112,13 +127,15 @@
       ],
       "exclude": [
         "photo:1666816"
-      ]
+      ],
+      "pin": "photo:6912807"
     },
     {
       "text": "You're allowed to let the conversation end.",
       "query": "sunrise over city",
       "visual": "photo",
-      "motion": "zoom_out"
+      "motion": "zoom_out",
+      "pin": "video:296958"
     }
   ]
 }
