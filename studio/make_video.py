@@ -7,7 +7,7 @@ import json
 import random
 import shutil
 
-from . import ambient, captions, config, edit, media, voice
+from . import ambient, captions, config, edit, media, thumbnail, voice
 
 REQUIRED = ("id", "title", "description", "scenes")
 
@@ -65,11 +65,12 @@ def make(path, offline=False):
         scenes, ep.get("voice", config.DEFAULT_VOICE), ep.get("speed", config.DEFAULT_SPEED), workdir)
     starts, offsets, lengths, total = edit.timeline(durations)
 
-    used, credits, clips, transitions = set(), [], [], []
+    used, credits, clips, transitions, visuals = set(), [], [], [], []
     for i, scene in enumerate(scenes):
         need = lengths[i]
         vis = media.placeholder(scene, i, workdir) if offline else media.pick(scene, i, vid, used, need)
         credits.append(vis["credit"])
+        visuals.append(vis)
         clip = workdir / f"clip-{i:02d}.mp4"
         if vis["kind"] == "video":
             edit.video_clip(vis["path"], need, clip, speed=scene.get("speed", 0.9))
@@ -86,6 +87,8 @@ def make(path, offline=False):
     out = config.OUT_DIR / f"{vid}.mp4"
     edit.assemble(clips, transitions, offsets, total, narration, music, ass, out, workdir)
     upload_sheet(ep, credits, config.OUT_DIR / f"{vid}-upload.md", total)
+    if not offline:
+        thumbnail.for_episode(ep, workdir, visuals)
     print(f"Done: {out} ({total:.1f}s)", flush=True)
     return out
 

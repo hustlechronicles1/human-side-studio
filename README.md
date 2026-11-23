@@ -47,6 +47,10 @@ Turns a short script into a finished YouTube Short, for free:
 - `transition` (optional): any FFmpeg xfade name, e.g. `fade`, `fadeblack`, `smoothleft`, `slideup`.
 - `voice`: e.g. `af_heart`, `af_bella`, `bf_emma` (female), `am_michael`, `am_fenrir`, `bm_george` (male).
 - `music` (optional): a file name from `music/`, or `"none"`.
+- `thumbnail` (optional): `{"scene": 2, "at": 0.5, "tag": "2:00 AM", "lines": ["STILL", "*REPLAYING*", "IT?"]}`
+  builds a 1080x1920 JPG from that scene's clean visual (`*word*` = gold). It's attached to the release.
+- `pin` / `exclude` (optional, per scene): lock or ban a specific stock item, e.g. `"pin": "photo:7346682"`.
+  The upload sheet lists the ref of every visual used.
 
 ## Run locally (optional)
 

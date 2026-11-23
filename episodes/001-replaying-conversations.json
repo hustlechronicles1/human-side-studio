@@ -139,5 +139,15 @@
       "motion": "zoom_out",
       "pin": "video:296958"
     }
-  ]
+  ],
+  "thumbnail": {
+    "scene": 2,
+    "at": 0.45,
+    "tag": "2:00 AM",
+    "lines": [
+      "STILL",
+      "*REPLAYING*",
+      "IT?"
+    ]
+  }
 }
