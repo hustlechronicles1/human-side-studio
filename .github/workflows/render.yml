@@ -1,0 +1,68 @@
+name: Render videos
+
+on:
+  push:
+    branches: [main]
+    paths: ["episodes/**", "music/**"]
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: "Re-render one episode (e.g. episodes/001-replaying-conversations.json). Leave blank to render all new ones."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Cache voice model
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0
+
+      - name: Cache stock-media searches and downloads
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: media-${{ github.run_id }}
+          restore-keys: media-
+
+      - name: Check the stock-media key
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          if [ -z "$PIXABAY_API_KEY" ] && [ -z "$PEXELS_API_KEY" ]; then
+            echo "::error::Add your Pixabay key as a secret named PIXABAY_API_KEY (Settings > Secrets and variables > Actions), then re-run this workflow."
+            exit 1
+          fi
+
+      - name: Render and publish new episodes
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          EPISODE: ${{ github.event.inputs.episode }}
+        run: python -m studio.publish "$EPISODE"
