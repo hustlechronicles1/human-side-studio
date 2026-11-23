@@ -4,21 +4,121 @@
   "title": "Why You Keep Replaying Conversations in Your Head",
   "header": "Why you replay conversations at night",
   "description": "It's 2am and you're still replaying something you said hours ago. Here's why your mind does it, and the one question that helps you let it go.\n\nThe Human Side: stories, insights and perspectives on the things we feel but rarely talk about.",
-  "tags": ["overthinking", "replaying conversations", "post-event processing", "spotlight effect", "human psychology", "overthinking at night", "social anxiety", "the human side"],
-  "hashtags": ["shorts", "psychology", "overthinking"],
+  "tags": [
+    "overthinking",
+    "replaying conversations",
+    "post-event processing",
+    "spotlight effect",
+    "human psychology",
+    "overthinking at night",
+    "social anxiety",
+    "the human side"
+  ],
+  "hashtags": [
+    "shorts",
+    "psychology",
+    "overthinking"
+  ],
   "voice": "af_heart",
   "speed": 0.88,
   "scenes": [
-    {"text": "It's two in the morning, and you're still replaying something you said at lunch.", "query": "woman awake in bed at night", "visual": "photo", "motion": "zoom_in"},
-    {"text": "Every word. Every pause. The look on their face.", "query": "thoughtful face close up", "visual": "video"},
-    {"text": "So why does your mind keep doing this?", "query": "rain on window night", "visual": "video"},
-    {"text": "Because to your brain, a conversation is never just small talk. It's a quiet test of whether you still belong.", "query": "friends talking silhouette", "visual": "photo", "motion": "pan_right"},
-    {"text": "So it rewinds the moment again and again, searching for the part you might have gotten wrong.", "query": "man sitting alone city lights", "visual": "photo", "motion": "zoom_out"},
-    {"text": "Psychologists call this post-event processing. And here's what most people never realize.", "query": "woman looking out window", "visual": "video"},
-    {"text": "The other person probably isn't replaying it at all.", "query": "people walking busy street", "visual": "video"},
-    {"text": "Research on the spotlight effect shows we consistently overestimate how much others notice our mistakes.", "query": "spotlight empty stage", "visual": "photo", "motion": "zoom_in", "fallback_queries": ["stage light dark"]},
-    {"text": "So tonight, when the replay starts, ask yourself one question.", "query": "night sky stars", "visual": "video"},
-    {"text": "Would I judge a friend this harshly for the same moment?", "query": "two friends sitting together sunset", "visual": "photo", "motion": "pan_left"},
-    {"text": "You're allowed to let the conversation end.", "query": "sunrise over city", "visual": "photo", "motion": "zoom_out"}
+    {
+      "text": "It's two in the morning, and you're still replaying something you said at lunch.",
+      "query": "insomnia woman",
+      "visual": "photo",
+      "motion": "zoom_in",
+      "fallback_queries": [
+        "sleepless night",
+        "woman bed night"
+      ],
+      "exclude": [
+        "photo:2072907"
+      ]
+    },
+    {
+      "text": "Every word. Every pause. The look on their face.",
+      "query": "thoughtful face close up",
+      "visual": "video"
+    },
+    {
+      "text": "So why does your mind keep doing this?",
+      "query": "rain on window night",
+      "visual": "video"
+    },
+    {
+      "text": "Because to your brain, a conversation is never just small talk. It's a quiet test of whether you still belong.",
+      "query": "people talking",
+      "visual": "photo",
+      "motion": "pan_right",
+      "fallback_queries": [
+        "conversation",
+        "friends talking"
+      ],
+      "exclude": [
+        "photo:4707539"
+      ]
+    },
+    {
+      "text": "So it rewinds the moment again and again, searching for the part you might have gotten wrong.",
+      "query": "lonely man city night",
+      "visual": "photo",
+      "motion": "zoom_out",
+      "fallback_queries": [
+        "man alone night",
+        "lonely man"
+      ]
+    },
+    {
+      "text": "Psychologists call this post-event processing. And here's what most people never realize.",
+      "query": "woman window thinking",
+      "visual": "photo",
+      "motion": "zoom_in",
+      "fallback_queries": [
+        "woman looking out window",
+        "pensive woman"
+      ],
+      "exclude": [
+        "video:22761"
+      ]
+    },
+    {
+      "text": "The other person probably isn't replaying it at all.",
+      "query": "people walking busy street",
+      "visual": "video"
+    },
+    {
+      "text": "Research on the spotlight effect shows we consistently overestimate how much others notice our mistakes.",
+      "query": "spotlight empty stage",
+      "visual": "photo",
+      "motion": "zoom_in",
+      "fallback_queries": [
+        "stage light",
+        "spotlight"
+      ]
+    },
+    {
+      "text": "So tonight, when the replay starts, ask yourself one question.",
+      "query": "night sky stars",
+      "visual": "video"
+    },
+    {
+      "text": "Would I judge a friend this harshly for the same moment?",
+      "query": "friends talking sunset",
+      "visual": "photo",
+      "motion": "pan_left",
+      "fallback_queries": [
+        "two friends sitting",
+        "friends silhouette"
+      ],
+      "exclude": [
+        "photo:1666816"
+      ]
+    },
+    {
+      "text": "You're allowed to let the conversation end.",
+      "query": "sunrise over city",
+      "visual": "photo",
+      "motion": "zoom_out"
+    }
   ]
 }

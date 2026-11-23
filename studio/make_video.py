@@ -45,7 +45,8 @@ def upload_sheet(ep, credits, path, seconds):
         "## Title\n```\n" + ep["title"] + "\n```\n\n"
         "## Description\n```\n" + ep["description"].strip() + f"\n\n{hashtags}\n\n{credit_line}\n```\n\n"
         "## Tags\n```\n" + ", ".join(tags) + "\n```\n\n"
-        "## Sources used\n" + "\n".join(f"- {c['page']}" for c in credits if c) + "\n"
+        "## Visuals used (scene: ref, link)\n"
+        + "\n".join(f"- scene {i + 1}: `{c.get('ref', '')}` {c['page']}" for i, c in enumerate(credits) if c) + "\n"
     )
     path.write_text(text, encoding="utf-8")
 
