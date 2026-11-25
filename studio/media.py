@@ -143,6 +143,7 @@ def _pexels_videos(query, key):
 MOOD_AVOID = {"happy", "smile", "smiling", "laugh", "laughing", "fun", "funny", "joy", "joyful", "party",
               "celebration", "christmas", "cheerful", "excited", "kid", "child", "childhood", "toy",
               "playing", "play", "snow", "winter", "beach", "bikini", "food", "cartoon", "illustration",
+              "children", "baby", "toddler", "infant", "schoolgirl", "schoolboy",           # no children on this channel
               "animal", "bird", "dog", "cat", "pet", "wildlife", "zoo", "insect",
               "beggar", "begging", "homeles", "poverty", "charity",           # never exploit real hardship
               "chroma", "greenbox", "greenscreen", "studio", "equipment", "render", "3d"}

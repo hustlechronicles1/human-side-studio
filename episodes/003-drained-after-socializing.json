@@ -56,7 +56,8 @@
       ],
       "exclude": [
         "video:233390"
-      ]
+      ],
+      "pin": "video:44647"
     },
     {
       "text": "It's not because you secretly hate people.",
@@ -69,7 +70,8 @@
       ],
       "exclude": [
         "photo:2462252"
-      ]
+      ],
+      "pin": "photo:2637841"
     },
     {
       "text": "Researchers in Finland checked in on people five times a day for nearly two weeks.",
@@ -83,7 +85,7 @@
     },
     {
       "text": "Being sociable lifted their mood in the moment.",
-      "query": "friends laughing dinner",
+      "query": "friends laughing",
       "visual": "photo",
       "allow": [
         "happy",
@@ -95,23 +97,26 @@
         "party"
       ],
       "fallback_queries": [
-        "friends talking dinner",
-        "friends cafe laughing"
+        "friends having fun",
+        "group of friends talking"
       ],
       "motion": "pan_right",
       "exclude": [
-        "video:236256"
+        "video:236256",
+        "photo:7133971"
       ]
     },
     {
       "text": "But about three hours later, they felt more tired.",
-      "query": "tired man night bus",
+      "query": "city timelapse night",
       "visual": "video",
       "fallback_queries": [
-        "tired man train window",
-        "exhausted man"
+        "city sunset to night",
+        "night city lights"
       ],
-      "pin": "video:44647"
+      "exclude": [
+        "video:44647"
+      ]
     },
     {
       "text": "Even the extroverts.",
@@ -136,7 +141,7 @@
     },
     {
       "text": "Being around people costs energy, even when you love them.",
-      "query": "family dinner together",
+      "query": "friends hugging",
       "visual": "photo",
       "allow": [
         "happy",
@@ -146,12 +151,13 @@
         "laughing"
       ],
       "fallback_queries": [
-        "friends dinner table",
-        "dinner party friends"
+        "couple hugging",
+        "friends embrace"
       ],
       "motion": "zoom_in",
       "exclude": [
-        "photo:7868140"
+        "photo:7868140",
+        "photo:1613584"
       ]
     },
     {
