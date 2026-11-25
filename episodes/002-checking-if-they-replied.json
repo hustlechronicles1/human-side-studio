@@ -3,28 +3,161 @@
   "format": "short",
   "title": "Why You Keep Checking If They Replied",
   "header": "Why you keep checking if they replied",
-  "hook": {"lines": ["STILL", "*CHECKING?*"]},
+  "hook": {
+    "lines": [
+      "STILL",
+      "*CHECKING?*"
+    ]
+  },
   "loop": true,
-  "pace": {"pause": 0.15, "transition": 0.35, "tail": 0.3},
+  "pace": {
+    "pause": 0.15,
+    "transition": 0.35,
+    "tail": 0.3
+  },
   "description": "Why do you keep checking if they replied? It isn't neediness. Your brain is fighting uncertainty. In a University College London study, a fifty-fifty chance of an electric shock was more stressful than knowing a shock was certain. Here's why every check feels like a slot machine, and one simple way to break the loop.\n\nFollow The Human Side for more on the things we feel but rarely talk about.",
   "source": "de Berker et al. (2016), Computations of uncertainty mediate acute stress responses in humans, Nature Communications",
-  "tags": ["why do I keep checking if they replied", "checking my phone for a text", "waiting for a reply", "texting anxiety", "overthinking", "uncertainty", "psychology facts", "human psychology", "the human side"],
-  "hashtags": ["overthinking", "psychology", "shorts"],
+  "tags": [
+    "why do I keep checking if they replied",
+    "checking my phone for a text",
+    "waiting for a reply",
+    "texting anxiety",
+    "overthinking",
+    "uncertainty",
+    "psychology facts",
+    "human psychology",
+    "the human side"
+  ],
+  "hashtags": [
+    "overthinking",
+    "psychology",
+    "shorts"
+  ],
   "pinned_comment": "Be honest: how many times have you checked today? 👇",
-  "thumbnail": {"scene": 1, "at": 0.5, "tag": "NO REPLY YET", "lines": ["STILL", "*CHECKING?*"]},
+  "thumbnail": {
+    "scene": 1,
+    "at": 0.5,
+    "tag": "NO REPLY YET",
+    "lines": [
+      "STILL",
+      "*CHECKING?*"
+    ]
+  },
   "voice": "af_heart",
   "speed": 1.0,
   "scenes": [
-    {"text": "You've checked if they replied... how many times now?", "query": "woman phone night", "visual": "video", "fallback_queries": ["girl phone dark", "woman looking at phone"]},
-    {"text": "That's not you being needy.", "query": "sad woman face", "visual": "photo", "motion": "zoom_in", "fallback_queries": ["pensive woman portrait", "woman thinking"]},
-    {"text": "It's your brain fighting uncertainty.", "query": "fog road", "visual": "video", "fallback_queries": ["foggy forest road", "fog forest"]},
-    {"text": "In one study, people faced a fifty-fifty chance of an electric shock.", "query": "lightning storm", "visual": "video", "fallback_queries": ["lightning night sky", "thunderstorm"]},
-    {"text": "That stressed them more than knowing for sure it was coming.", "query": "anxious man face", "visual": "photo", "motion": "zoom_in", "fallback_queries": ["stressed man", "worried man portrait"]},
-    {"text": "For your brain, not knowing can feel worse than bad news.", "query": "woman lying awake bed", "visual": "video", "fallback_queries": ["insomnia woman", "woman bed night"]},
-    {"text": "And replies arrive at random.", "query": "phone notification hand", "visual": "video", "fallback_queries": ["smartphone hand dark", "phone screen hand"]},
-    {"text": "So every check feels like it might pay off. Like a slot machine.", "query": "slot machine", "visual": "video", "fallback_queries": ["casino slot machine", "slot machine lights"]},
-    {"text": "Try this: put your phone in another room for twenty minutes.", "query": "phone on table", "visual": "photo", "motion": "zoom_out", "fallback_queries": ["smartphone on table", "phone face down table"]},
-    {"text": "The reply won't come faster because you're watching.", "query": "clock ticking", "visual": "video", "fallback_queries": ["wall clock", "clock time"]},
-    {"text": "And now you're wondering if they've replied.", "query": "girl phone dark", "visual": "video", "fallback_queries": ["woman phone night", "woman looking at phone"]}
+    {
+      "text": "You've checked if they replied... how many times now?",
+      "query": "woman phone night",
+      "visual": "video",
+      "fallback_queries": [
+        "girl phone dark",
+        "woman looking at phone"
+      ],
+      "pin": "video:233390"
+    },
+    {
+      "text": "That's not you being needy.",
+      "query": "sad woman face",
+      "visual": "photo",
+      "motion": "zoom_in",
+      "fallback_queries": [
+        "pensive woman portrait",
+        "woman thinking"
+      ],
+      "pin": "photo:3616244"
+    },
+    {
+      "text": "It's your brain fighting uncertainty.",
+      "query": "fog road",
+      "visual": "video",
+      "fallback_queries": [
+        "foggy forest road",
+        "fog forest"
+      ],
+      "pin": "video:310453"
+    },
+    {
+      "text": "In one study, people faced a fifty-fifty chance of an electric shock.",
+      "query": "lightning storm",
+      "visual": "video",
+      "fallback_queries": [
+        "lightning night sky",
+        "thunderstorm"
+      ],
+      "pin": "video:283426"
+    },
+    {
+      "text": "That stressed them more than knowing for sure it was coming.",
+      "query": "anxious man face",
+      "visual": "photo",
+      "motion": "zoom_in",
+      "fallback_queries": [
+        "stressed man",
+        "worried man portrait"
+      ],
+      "pin": "photo:657869"
+    },
+    {
+      "text": "For your brain, not knowing can feel worse than bad news.",
+      "query": "woman lying awake bed",
+      "visual": "video",
+      "fallback_queries": [
+        "insomnia woman",
+        "woman bed night"
+      ],
+      "pin": "video:151295"
+    },
+    {
+      "text": "And replies arrive at random.",
+      "query": "phone notification hand",
+      "visual": "video",
+      "fallback_queries": [
+        "smartphone hand dark",
+        "phone screen hand"
+      ],
+      "pin": "video:47743"
+    },
+    {
+      "text": "So every check feels like it might pay off. Like a slot machine.",
+      "query": "slot machine",
+      "visual": "video",
+      "fallback_queries": [
+        "casino slot machine",
+        "slot machine lights"
+      ],
+      "pin": "photo:632862"
+    },
+    {
+      "text": "Try this: put your phone in another room for twenty minutes.",
+      "query": "phone on table",
+      "visual": "photo",
+      "motion": "zoom_out",
+      "fallback_queries": [
+        "smartphone on table",
+        "phone face down table"
+      ],
+      "pin": "photo:7567747"
+    },
+    {
+      "text": "The reply won't come faster because you're watching.",
+      "query": "clock ticking",
+      "visual": "video",
+      "fallback_queries": [
+        "wall clock",
+        "clock time"
+      ],
+      "pin": "video:15615"
+    },
+    {
+      "text": "And now you're wondering if they've replied.",
+      "query": "girl phone dark",
+      "visual": "video",
+      "fallback_queries": [
+        "woman phone night",
+        "woman looking at phone"
+      ],
+      "pin": "video:233390"
+    }
   ]
 }
