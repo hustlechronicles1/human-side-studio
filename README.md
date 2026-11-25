@@ -49,6 +49,11 @@ Turns a short script into a finished YouTube Short, for free:
 - `music` (optional): a file name from `music/`, or `"none"`.
 - `thumbnail` (optional): `{"scene": 2, "at": 0.5, "tag": "2:00 AM", "lines": ["STILL", "*REPLAYING*", "IT?"]}`
   builds a 1080x1920 JPG from that scene's clean visual (`*word*` = gold). It's attached to the release.
+- `hook` (optional): `{"lines": ["STILL", "*CHECKING?*"]}` shows huge text for the opening seconds (until the first line ends).
+- `pace` (optional): `{"pause": 0.15, "transition": 0.35, "tail": 0.3}` for a faster cut (defaults are slower).
+- `loop` (optional): `true` keeps the end short and the music fades quick, so the Short replays smoothly.
+- `pinned_comment`, `source` (optional): added to the upload sheet / description.
+- `allow` (optional, per scene): words like `"happy"` that the mood filter would otherwise skip.
 - `pin` / `exclude` (optional, per scene): lock or ban a specific stock item, e.g. `"pin": "photo:7346682"`.
   The upload sheet lists the ref of every visual used.
 

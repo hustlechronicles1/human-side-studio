@@ -78,7 +78,47 @@ def _chunks(words, max_words=4):
     return out
 
 
-def build(scenes, starts, speech, header, path):
+_black = {}
+
+
+def _hook_size(text, max_size, max_px=940):
+    """Largest ASS font size whose rendered width fits. ASS size ~ 1.2x the font's em size."""
+    from PIL import ImageFont
+    size = max_size
+    while size > 60:
+        em = round(size / 1.2)
+        if em not in _black:
+            _black[em] = ImageFont.truetype(str(config.FONTS_DIR / "Montserrat-Black.ttf"), em)
+        if _black[em].getlength(text) <= max_px:
+            return size
+        size -= 6
+    return size
+
+
+def _hook_events(hook, until, gold_ass):
+    """Huge two/three-line hook in the upper third for the first seconds (*word* = gold)."""
+    out, y = [], int(hook.get("y", 300))
+    rows = []
+    for raw in hook["lines"]:
+        gold = raw.startswith("*") and raw.endswith("*")
+        text = _clean(raw.strip("*"))
+        rows.append((text, gold, _hook_size(text, 190 if gold else 135)))
+    height = sum(int(sz * 0.98) for _, _, sz in rows)
+    # soft dark wash behind the words so they read on any background
+    top, bottom = max(0, y - 70), y + height + 70
+    out.append(f"Dialogue: 2,{_ass_time(0)},{_ass_time(until)},Cap,,0,0,0,,"
+               f"{{\\an7\\pos(0,0)\\p1\\bord0\\shad0\\c&H000000&\\1a&H78&\\blur40\\fad(0,250)}}"
+               f"m 0 {top} l {config.WIDTH} {top} {config.WIDTH} {bottom} 0 {bottom}{{\\p0}}")
+    for text, gold, size in rows:
+        colour = gold_ass if gold else "&H00FFFFFF&"
+        out.append(f"Dialogue: 3,{_ass_time(0)},{_ass_time(until)},Cap,,0,0,0,,"
+                   f"{{\\an8\\pos({config.WIDTH // 2},{y})\\fnMontserrat Black\\fs{size}\\c{colour}"
+                   f"\\bord9\\shad4\\fad(0,250)\\fscx108\\fscy108\\t(0,160,\\fscx100\\fscy100)}}{text}")
+        y += int(size * 0.98)
+    return out
+
+
+def build(scenes, starts, speech, header, path, hook=None):
     gold = config.BRAND_GOLD
     gold_ass = f"&H00{gold[4:6]}{gold[2:4]}{gold[0:2]}&"      # ASS colours are BGR
     lines = [
@@ -95,8 +135,13 @@ def build(scenes, starts, speech, header, path):
         "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
     ]
     total_end = starts[-1] + speech[-1] + config.END_TAIL
+    header_from = 0.15
+    if hook and hook.get("lines"):
+        until = float(hook.get("until") or (starts[0] + speech[0] + 0.2))
+        lines.extend(_hook_events(hook, until, gold_ass))
+        header_from = until
     if header:
-        lines.append(f"Dialogue: 1,{_ass_time(0.15)},{_ass_time(total_end)},Head,,0,0,0,,"
+        lines.append(f"Dialogue: 1,{_ass_time(header_from)},{_ass_time(total_end)},Head,,0,0,0,,"
                      f"{{\\fad(300,400)}}{_clean(header)}")
 
     for k, scene in enumerate(scenes):

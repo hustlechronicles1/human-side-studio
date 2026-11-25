@@ -1,0 +1,29 @@
+{
+  "id": "003-drained-after-socializing",
+  "format": "short",
+  "title": "Why You Feel Drained After Socializing",
+  "header": "Why socializing drains you",
+  "hook": {"lines": ["HAD FUN.", "*STILL DRAINED?*"]},
+  "loop": true,
+  "pace": {"pause": 0.15, "transition": 0.35, "tail": 0.3},
+  "description": "Why do you feel drained after socializing, even when you had a great time? Researchers at the University of Helsinki checked in on people five times a day for 12 days. Being sociable lifted their mood in the moment, but they felt more tired about three hours later, extroverts included. Here's what that means for your social battery.\n\nFollow The Human Side for more on the things we feel but rarely talk about.",
+  "source": "Leikas & Ilmarinen (2017), Happy Now, Tired Later?, Journal of Personality",
+  "tags": ["why do I feel tired after socializing", "drained after socializing", "social battery", "social exhaustion", "introvert", "extrovert", "psychology facts", "human psychology", "the human side"],
+  "hashtags": ["socialbattery", "psychology", "shorts"],
+  "pinned_comment": "How long does it take you to recharge after a big night out? 👇",
+  "thumbnail": {"scene": 1, "at": 0.5, "tag": "3 HOURS LATER", "lines": ["HAD FUN.", "*STILL DRAINED?*"]},
+  "voice": "af_heart",
+  "speed": 1.0,
+  "scenes": [
+    {"text": "You had a great night out. So why do you feel this drained?", "query": "tired woman sofa", "visual": "video", "fallback_queries": ["exhausted woman couch", "tired woman night"]},
+    {"text": "It's not because you secretly hate people.", "query": "woman alone window", "visual": "photo", "motion": "zoom_in", "fallback_queries": ["woman alone thinking", "pensive woman"]},
+    {"text": "Researchers in Finland checked in on people five times a day for nearly two weeks.", "query": "people walking city", "visual": "video", "fallback_queries": ["crowd street walking", "commuters walking"]},
+    {"text": "Being sociable lifted their mood in the moment.", "query": "friends laughing dinner", "visual": "video", "allow": ["happy", "smile", "smiling", "laugh", "laughing", "fun", "party"], "fallback_queries": ["friends talking dinner", "friends cafe laughing"]},
+    {"text": "But about three hours later, they felt more tired.", "query": "tired man night bus", "visual": "video", "fallback_queries": ["tired man train window", "exhausted man"]},
+    {"text": "Even the extroverts.", "query": "tired woman face", "visual": "photo", "motion": "zoom_out", "fallback_queries": ["exhausted woman portrait", "sleepy woman"]},
+    {"text": "A big part of it was simply how many people they'd been around.", "query": "crowd people", "visual": "video", "fallback_queries": ["busy crowd", "crowded street"]},
+    {"text": "Being around people costs energy, even when you love them.", "query": "family dinner table", "visual": "video", "allow": ["happy", "smile", "smiling", "laugh", "laughing"], "fallback_queries": ["friends dinner table", "dinner together"]},
+    {"text": "So next time, plan a quiet evening after a busy one.", "query": "cozy room lamp", "visual": "photo", "motion": "zoom_in", "fallback_queries": ["woman reading book cozy", "cozy evening tea"]},
+    {"text": "Because you'll want to say yes again.", "query": "friends night city", "visual": "video", "allow": ["fun", "happy", "party", "smile", "smiling", "laugh", "laughing"], "fallback_queries": ["friends walking night", "friends night out"]}
+  ]
+}

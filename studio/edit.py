@@ -108,7 +108,7 @@ def timeline(durations):
     return starts, v, lengths, total
 
 
-def assemble(clips, transitions, offsets, total, narration, music, ass_path, out_path, workdir):
+def assemble(clips, transitions, offsets, total, narration, music, ass_path, out_path, workdir, loop=False):
     T = config.TRANSITION
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
     for c in clips:
@@ -131,9 +131,10 @@ def assemble(clips, transitions, offsets, total, narration, music, ass_path, out
     n = len(clips)
     parts.append(f"[{n}:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000[nar]")
     if music:
-        fade_at = max(0.0, total - 2.5)
-        parts.append(f"[{n + 1}:a]aresample=48000,volume={config.MUSIC_VOLUME},afade=t=in:d=1.5,"
-                     f"afade=t=out:st={fade_at:.2f}:d=2.5[mus]")
+        fade_in, fade_out = (0.25, 0.5) if loop else (1.5, 2.5)   # short fades let a loop replay seamlessly
+        fade_at = max(0.0, total - fade_out)
+        parts.append(f"[{n + 1}:a]aresample=48000,volume={config.MUSIC_VOLUME},afade=t=in:d={fade_in},"
+                     f"afade=t=out:st={fade_at:.2f}:d={fade_out}[mus]")
         parts.append("[nar][mus]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]")
     else:
         parts.append("[nar]anull[a]")

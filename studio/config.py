@@ -23,6 +23,9 @@ SCENE_PAUSE = 0.40       # breath added after each scene's narration (seconds)
 TRANSITION = 0.60        # length of each visual transition (seconds)
 END_TAIL = 1.20          # silence/visual hold at the very end (seconds)
 
+# Per-episode "pace" overrides these: {"pause": .., "transition": .., "tail": ..}
+PACE_DEFAULTS = {"pause": SCENE_PAUSE, "transition": TRANSITION, "tail": END_TAIL}
+
 # Calm transition rotation used when a scene doesn't name one
 TRANSITIONS = ["fade", "smoothleft", "fade", "smoothup", "fadeblack", "slideleft"]
 # Motion rotation for photos when a scene doesn't name one

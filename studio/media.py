@@ -207,7 +207,8 @@ def pick(scene, index, seed, used, need_seconds):
         want_kind = scene.get("visual", "photo")
         queries = [scene["query"]] + scene.get("fallback_queries", [])
         want_words = set().union(*(_words(q) for q in queries[:1]))
-        avoid = (MOOD_AVOID - want_words) | _words(" ".join(scene.get("avoid", [])))
+        allow = _words(" ".join(scene.get("allow", [])))
+        avoid = (MOOD_AVOID - want_words - allow) | _words(" ".join(scene.get("avoid", [])))
         excluded = set(scene.get("exclude", []))
         pool, seen = [], set()
         for kind in (want_kind, "photo" if want_kind == "video" else "video"):

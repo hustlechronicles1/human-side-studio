@@ -38,14 +38,17 @@ def upload_sheet(ep, credits, path, seconds):
     tags = ep.get("tags", [])
     hashtags = " ".join("#" + t.replace(" ", "") for t in ep.get("hashtags", ["shorts", "psychology"]))
     people = sorted({c["author"] for c in credits if c and c.get("author")})
-    credit_line = "Visuals: Pixabay / Pexels" + (f" ({', '.join(people[:6])})" if people else "")
+    credit_line = "Visuals: Pixabay" + (f" ({', '.join(people[:6])})" if people else "") + ". Narration: AI voice."
+    if ep.get("source"):
+        credit_line += f"\nSource: {ep['source']}"
     text = (
         f"# {ep['title']}\n\n"
         f"Length: {seconds:.0f}s\n\n"
         "## Title\n```\n" + ep["title"] + "\n```\n\n"
         "## Description\n```\n" + ep["description"].strip() + f"\n\n{hashtags}\n\n{credit_line}\n```\n\n"
         "## Tags\n```\n" + ", ".join(tags) + "\n```\n\n"
-        "## Visuals used (scene: ref, link)\n"
+        + ("## Pinned comment\n```\n" + ep["pinned_comment"] + "\n```\n\n" if ep.get("pinned_comment") else "")
+        + "## Visuals used (scene: ref, link)\n"
         + "\n".join(f"- scene {i + 1}: `{c.get('ref', '')}` {c['page']}" for i, c in enumerate(credits) if c) + "\n"
     )
     path.write_text(text, encoding="utf-8")
@@ -59,7 +62,9 @@ def make(path, offline=False):
         shutil.rmtree(workdir)
     workdir.mkdir(parents=True)
     scenes = ep["scenes"]
-    print(f"== {vid}: {ep['title']} ({len(scenes)} scenes)", flush=True)
+    pace = {**config.PACE_DEFAULTS, **ep.get("pace", {})}
+    config.SCENE_PAUSE, config.TRANSITION, config.END_TAIL = pace["pause"], pace["transition"], pace["tail"]
+    print(f"== {vid}: {ep['title']} ({len(scenes)} scenes, pace {pace})", flush=True)
 
     narration, durations, speech = voice.narrate(
         scenes, ep.get("voice", config.DEFAULT_VOICE), ep.get("speed", config.DEFAULT_SPEED), workdir)
@@ -81,11 +86,11 @@ def make(path, offline=False):
         transitions.append(scene.get("transition") or config.TRANSITIONS[i % len(config.TRANSITIONS)])
         print(f"  scene {i + 1}/{len(scenes)}: {vis['kind']} {need:.2f}s", flush=True)
 
-    ass = captions.build(scenes, starts, speech, ep.get("header", ""), workdir / "captions.ass")
+    ass = captions.build(scenes, starts, speech, ep.get("header", ""), workdir / "captions.ass", ep.get("hook"))
     music = pick_music(ep, total, workdir)
     config.OUT_DIR.mkdir(exist_ok=True)
     out = config.OUT_DIR / f"{vid}.mp4"
-    edit.assemble(clips, transitions, offsets, total, narration, music, ass, out, workdir)
+    edit.assemble(clips, transitions, offsets, total, narration, music, ass, out, workdir, loop=ep.get("loop", False))
     upload_sheet(ep, credits, config.OUT_DIR / f"{vid}-upload.md", total)
     if not offline:
         thumbnail.for_episode(ep, workdir, visuals)
